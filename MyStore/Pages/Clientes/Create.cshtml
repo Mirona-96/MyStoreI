@@ -1,0 +1,70 @@
+﻿@page
+@model MyStore.Pages.Clientes.CreateModel
+@{
+}
+
+<br>
+
+<h2>Novo Cliente</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert-warning alert-dismissible fade show" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss='alert' aria-label="close"></button>
+    </div>
+}
+
+
+<form method="POST">
+       <div class="row mb-3">
+           <label class ="col-sm-3 col-form-label">Nome</label>
+           <div class="col-sm-6">
+               <input type="text" class="form-control" name="name" value="@Model.clienteInfo.nome"
+           </div>
+       </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-6">
+                <input type ="text" class="form-control" name="email" value="@Model.clienteInfo.email" /> 
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Telefone</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="telephone" value="@Model.clienteInfo.telefone" />
+             </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Endereco</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="endereco" value="@Model.clienteInfo.endereco" />
+            </div>
+        </div>
+
+
+        @if (Model.sucessMessage.Length > 0)
+        {
+            <div class="row mb-3">
+                <div class="col-sm-9">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.sucessMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss='alert' aria-label="close"></button>
+                </div>
+                </div>
+            </div>
+        }
+
+
+        <div class ="row mb-3">
+            <div class="offset-sm-3 col-sm-3 d-grid">
+                <button type="submit" class="btn btn-primary">Submeter</button>
+            </div>
+            <div class="col-sm-3 d-grid">
+                <a class="btn btn-outline-primary" href="/" role="button">Cancelar</a>
+            </div>
+        </div>
+</form>

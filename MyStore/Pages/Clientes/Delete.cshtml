@@ -1,0 +1,37 @@
+﻿@page
+@using MySql.Data.MySqlClient;
+@{
+    string errorMessage = "";
+
+    try
+    {
+        string idCliente = Request.Query["idCliente"];
+
+        string connString = "Server = localhost; Database=mystorebd; UserId=root; Password=junho996;";
+
+        using (MySqlConnection conn = new MySqlConnection(connString))
+        {
+            conn.Open();
+
+            string deleteQuery = "DELETE FROM Clientes WHERE idCliente = @idCliente;";
+
+            using (MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn))
+            {
+                deleteCmd.Parameters.AddWithValue("@idCliente", idCliente);
+
+                deleteCmd.ExecuteNonQuery();
+            }
+        }
+    } 
+    catch (MySqlException ex)
+    {
+        errorMessage = "Erro do MySql: " + ex.Message;
+    }
+    catch (Exception ex)
+    {
+        errorMessage = "Erro ocorrido: " + ex.Message;
+    }
+
+    Response.Redirect("/Clientes/Index");
+
+}
