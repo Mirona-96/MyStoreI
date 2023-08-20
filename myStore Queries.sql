@@ -33,3 +33,8 @@ SELECT
 From 
 	Clientes;
     
+update Clientes 
+SET  endereco = 'Museu' 
+WHERE idCliente = 5;
+    
+
